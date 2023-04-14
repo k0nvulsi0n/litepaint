@@ -12,6 +12,7 @@ cv.createTrackbar('G','image',0,255,nothing)
 cv.createTrackbar('B','image',0,255,nothing)
 cv.createTrackbar('Figure', 'image',0,2,nothing)
 cv.createTrackbar('Size', 'image',0,width,nothing)
+cv.createTrackbar('Thickness', 'image',0,255,nothing)
 
 while(1):
     cv.imshow('image',img)
@@ -24,9 +25,10 @@ while(1):
     b = cv.getTrackbarPos('B','image')
     f = cv.getTrackbarPos('Figure', 'image')
     s = cv.getTrackbarPos('Size', 'image')
+    t = cv.getTrackbarPos('Thickness', 'image')
     img[:] = [b,g,r]
     if f == 1 and s != 0:
-        cv.rectangle(img,(width//2-s//2,height//2-s//2),(width//2+s//2,height//2 + s//2),(0,255,0),3)
+        cv.rectangle(img,(width//2-s//2,height//2-s//2),(width//2+s//2,height//2 + s//2),(0,255,0),t)
     elif f == 2 and s != 0:
-        cv.circle(img,(width//2,height//2), s, (0,255,0), -1)
+        cv.circle(img,(width//2,height//2), s, (0,255,0), t)
 cv.destroyAllWindows()
